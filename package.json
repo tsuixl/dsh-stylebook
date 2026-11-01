@@ -54,28 +54,5 @@
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "~4.0.5"
-  },
-  "devDependencies": {
-    "@deepseek-ai/cordis": "~4.0.5",
-    "@deepseek-ai/dsh-client-ui-renderer": "0.2.1-rc.5",
-    "@deepseek-ai/dsh-client-ui-settings": "0.2.1-rc.5",
-    "@deepseek-ai/dsh-client-ui-theme": "0.2.1-rc.5",
-    "@deepseek-ai/dsh-settings": "0.2.1-rc.5",
-    "@types/node": "^24.19.2",
-    "@types/react": "18.3.26",
-    "esbuild": "0.25.12",
-    "jsdom": "26.1.0",
-    "react": "18.3.1",
-    "typescript": "5.9.3"
-  },
-  "scripts": {
-    "build": "node scripts/build.mjs",
-    "check": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test tests/*.test.ts tests/*.test.mjs",
-    "pack:local": "pnpm package:check",
-    "design:sync": "node scripts/sync-design.mjs",
-    "design:check": "node scripts/sync-design.mjs --check",
-    "package:check": "node scripts/check-package.mjs",
-    "verify": "pnpm check && pnpm design:check && pnpm test && pnpm package:check"
   }
 }
