@@ -1,0 +1,83 @@
+{
+  "name": "dsh-stylebook",
+  "version": "0.1.0-beta.1",
+  "description": "Typography, three-color themes and named appearance presets for DeepSeek Harness.",
+  "type": "module",
+  "license": "MIT",
+  "author": "tsuixl",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tsuixl/dsh-stylebook.git"
+  },
+  "homepage": "https://github.com/tsuixl/dsh-stylebook#readme",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "appearance",
+    "font",
+    "theme"
+  ],
+  "engines": {
+    "node": ">=24.9.0",
+    "dsh": "0.2.1-rc.5"
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "lib",
+    "locale",
+    "cordis.patch.yml",
+    "LICENSE",
+    "README.md",
+    "README.en.md",
+    "CHANGELOG.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-theme",
+        "@deepseek-ai/dsh-client-ui-renderer"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts tests/*.test.mjs",
+    "pack:local": "pnpm package:check",
+    "design:sync": "node scripts/sync-design.mjs",
+    "prepack": "node scripts/build.mjs",
+    "design:check": "node scripts/sync-design.mjs --check",
+    "package:check": "node scripts/check-package.mjs",
+    "verify": "pnpm check && pnpm design:check && pnpm test && pnpm package:check"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "3.18.5"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.5"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "~4.0.5",
+    "@deepseek-ai/dsh-client-ui-renderer": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-client-ui-settings": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-client-ui-theme": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-settings": "0.2.1-rc.5",
+    "@types/node": "^24.19.2",
+    "@types/react": "18.3.26",
+    "esbuild": "0.25.12",
+    "jsdom": "26.1.0",
+    "react": "18.3.1",
+    "typescript": "5.9.3"
+  },
+  "packageManager": "pnpm@11.25.0"
+}
