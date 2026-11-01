@@ -49,17 +49,6 @@
       ]
     }
   },
-  "scripts": {
-    "build": "node scripts/build.mjs",
-    "check": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test tests/*.test.ts tests/*.test.mjs",
-    "pack:local": "pnpm package:check",
-    "design:sync": "node scripts/sync-design.mjs",
-    "prepack": "node scripts/build.mjs",
-    "design:check": "node scripts/sync-design.mjs --check",
-    "package:check": "node scripts/check-package.mjs",
-    "verify": "pnpm check && pnpm design:check && pnpm test && pnpm package:check"
-  },
   "dependencies": {
     "@deepseek-ai/schemastery": "3.18.5"
   },
@@ -79,5 +68,14 @@
     "react": "18.3.1",
     "typescript": "5.9.3"
   },
-  "packageManager": "pnpm@11.25.0"
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts tests/*.test.mjs",
+    "pack:local": "pnpm package:check",
+    "design:sync": "node scripts/sync-design.mjs",
+    "design:check": "node scripts/sync-design.mjs --check",
+    "package:check": "node scripts/check-package.mjs",
+    "verify": "pnpm check && pnpm design:check && pnpm test && pnpm package:check"
+  }
 }
